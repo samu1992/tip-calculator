@@ -1,5 +1,4 @@
 import React, { useState ,useRef } from 'react';
-import Swal from 'sweetalert2';
 const MyForm = () => {
     const [inputValue, setInputValue] = useState('');
     const [input2Value, setInput2Value] = useState('');
@@ -41,6 +40,13 @@ const MyForm = () => {
     const handleInputFocus = (inputName) => {
         activeInput.current = inputName;
     };
+
+    const resetInput = (event) =>{
+        event.preventDefault();
+        setInputValue('');
+        setInput2Value('');
+        setResult('');
+    }
     return (
         <main>
             <form className='container_form'>
@@ -51,6 +57,7 @@ const MyForm = () => {
                 {calculator()}
                 </div>
                 <button className='b_result' onClick={handleResultClick}>RESULT</button>
+                <button className='b_result' onClick={resetInput}>RESET</button>
             </form>
             <section className='result'><strong>{result}</strong></section>
         </main>
